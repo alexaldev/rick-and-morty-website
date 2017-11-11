@@ -1,4 +1,4 @@
-/*      Base Style */
+/*      Base Style      s*/
 body, html {
 		height: 100%;
 		margin: 0;
@@ -59,4 +59,33 @@ body, html {
 
 .btn:hover .dropdown-content {
 		display: block;
+}
+
+/*      FOOTER STYLE    */
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(54, 25, 25, .5);
+    color:aqua;
+    text-align: center;
+  
+}
+
+footer p {
+    position: absolute;
+    bottom: 0;
+}
+footer *
+{
+    display: inline;
+    padding: 8px;
+}
+
+footer img{
+    max-width: 48px;
+    max-height: 48px;
+    float: right;
+    margin-right: 48px;
 }
