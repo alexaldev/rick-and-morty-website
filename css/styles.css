@@ -49,7 +49,45 @@ nav .current {
 
 /*      MAIN CONTENT STYLE  */
 .main_content {
+    width: auto;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, .5);
+    text-align: center;
+    padding: 32px;
     
+}
+
+/*   MAIN CONTENT - Home    */
+.main_content .main_content_title {
+    color: white;
+}
+
+
+.main_content .home_character img{
+    width: 148px;
+    height: 148px;
+    display: inline;
+}
+
+.main_content p {
+    display: inline;
+    color: white;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/*   MAIN CONTENT - Random Clips  */
+
+.main_content .random_videos {
+    display: inline;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main_content iframe {
+    width: 480px;
+    height: 270px;
+    margin-left: 16px;
 }
 
 /*      FOOTER STYLE    */
@@ -59,7 +97,7 @@ footer {
     bottom: 0;
     width: 100%;
     background: rgba(54, 25, 25, .5);
-    color:aqua;
+    color: white;
     text-align: center;
   
 }
@@ -67,7 +105,10 @@ footer {
 footer p {
     position: absolute;
     bottom: 0;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
 }
+
 footer *
 {
     display: inline;
