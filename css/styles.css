@@ -4,8 +4,14 @@ body, html {
 		margin: 0;
         background-image: url("../images/AwGeez.jpg");
         background-position: center;
+        background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-size: cover;
+}
+
+#container {
+   min-height:100%;
+   position:relative;
 }
 
 /*      NAVIGATION STYLE    */
@@ -54,7 +60,8 @@ nav .current {
     background: rgba(0, 0, 0, .5);
     text-align: center;
     padding: 32px;
-    
+    margin-bottom: 24px;   /* Height of the footer */
+
 }
 
 /*   MAIN CONTENT - Home    */
@@ -92,14 +99,14 @@ nav .current {
 
 /*      FOOTER STYLE    */
 footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    position: relative;
+    /*left: 0;
+    bottom: 0;*/
     width: 100%;
-    background: rgba(54, 25, 25, .5);
+    background: rgba(25, 25, 25, 1);
     color: white;
     text-align: center;
-  
+    height: 72px;   /* Height of the footer */
 }
 
 footer p {
@@ -120,4 +127,5 @@ footer img{
     max-height: 48px;
     float: right;
     margin-right: 48px;
+    vertical-align: middle;
 }
