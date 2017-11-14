@@ -16,16 +16,16 @@ body, html {
 
 /*      NAVIGATION STYLE    */
 nav {
-		position: relative;
-        background: rgba(0, 0, 0, .2);
-		min-width: 195px;
-        max-width: 250px;
-        margin-left:16px;
-        margin-top: 16px;
-		font-family: "Comic Sans MS", cursive, sans-serif;
-		color: white;
-		text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-		text-decoration-color: white;
+	position: relative;
+    background: rgba(0, 0, 0, .2);
+	min-width: 195px;
+    max-width: 250px;
+    margin-left:16px;
+    margin-top: 16px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: white;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	text-decoration-color: white;
 }
 
 nav a {
@@ -37,12 +37,12 @@ nav a {
 
 nav ul {
     list-style-type: none;
-    padding: 16px;
+    padding: 0;
 }
 
-nav li {
+nav li a {
     display: block;
-    margin-top: 12px;
+    padding: 8px 16px;
 }
 
 nav li:hover {
@@ -53,6 +53,25 @@ nav .current {
     text-decoration: underline;
 }
 
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 100%;
+    padding: 0;
+    background: rgba(0, 0, 0, .2);
+}
+
+nav ul ul li {
+    float:none;
+    width:800px;
+    z-index: 1;
+}
+
+nav ul li:hover > ul {
+    display:block;
+}
+
 /*      MAIN CONTENT STYLE  */
 .main_content {
     width: auto;
@@ -61,7 +80,8 @@ nav .current {
     text-align: center;
     padding: 32px;
     margin-bottom: 24px;   /* Height of the footer */
-
+    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 /*   MAIN CONTENT - Home    */
@@ -95,6 +115,62 @@ nav .current {
     width: 480px;
     height: 270px;
     margin-left: 16px;
+
+}
+
+/*   MAIN CONTENT - News  */
+
+article img {
+    max-width: 30%;
+    max-height: 25%;
+}
+
+main {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+main hr {
+    width: 60%;
+    margin: 5% auto;
+}
+
+.news-text {
+    width: 60%;
+    margin: auto;
+}
+
+.news-title {
+
+}
+
+.news-content {
+    text-align: justify;
+    text-justify: auto;
+}
+
+.news-content p {
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.news-content iframe {
+    margin: 10px auto;
+    display: block;
+}
+
+.news-small {
+    margin-top: 10px;
+    text-align: left;
+    float: left;
+    display: inline-block;
+}
+
+.news-time {
+    float: right;
+    text-align: right;
+    display: inline-block;
 }
 
 /*      FOOTER STYLE    */
