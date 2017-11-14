@@ -14,35 +14,50 @@ body, html {
    position:relative;
 }
 
+#header-nav {
+    position: relative;
+    margin-bottom: 5%;
+}
+
+header {
+    display: block;
+    width: 40%;
+    margin: 4% auto 0 auto;
+}
+
+header img {
+    display: block;
+    /*max-width: 30%;*/
+    
+}
+
 /*      NAVIGATION STYLE    */
 nav {
 	position: relative;
     background: rgba(0, 0, 0, .2);
 	min-width: 195px;
-    	max-width: 250px;
-    	margin-left:16px;
-    	margin-top: 16px;
+    max-width: 250px;
+    margin-left:16px;
+    margin-top: -16%;
+
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	color: white;
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	text-decoration-color: white;
 }
 
-nav a {
+nav li .nav-entry {
     text-decoration:none; 
     color:white;
     font-weight: bold;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    display: block;
+    padding: 8px 16px;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-}
-
-nav li a {
-    display: block;
-    padding: 8px 16px;
 }
 
 nav li:hover {
@@ -51,6 +66,7 @@ nav li:hover {
 
 nav .current {
     text-decoration: underline;
+    cursor: default;
 }
 
 nav ul ul {
@@ -146,8 +162,8 @@ main hr {
 }
 
 .news-content {
-    text-align: justify;
-    text-justify: auto;
+    text-align: left;
+    /*text-justify: auto;*/
 }
 
 .news-content p {
