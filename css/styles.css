@@ -211,6 +211,22 @@ article iframe {
     display: inline-block;
 }
 
+
+
+
+/* MAIN CONTENT - SEASON GUIDE*/
+.season-text {
+	text-align:left;
+	display: inline-block;
+}
+.season-img {
+ 	max-width: 30%;
+ 	max-height: 25%;	
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
 /*      FOOTER STYLE    */
 footer {
     position: relative;
