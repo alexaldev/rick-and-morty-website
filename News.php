@@ -1,47 +1,10 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <head>
-        <meta charset="utf-8">
-        <link rel="icon" type="image/ico" href="./images/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <meta name="description" content="This is page is about Rick and Morty.">
-        <meta name="author" content="CSDAuth">
-        
-        <title>
-	       Rick and Morty News
-        </title>
-    
-    </head>
-    <body>
-        <div id="container">
+<?php
 
-        <header>
-        <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/c/c8/Rick_and_Morty_logo.png" alt="Rick and Morty Logo"></a>
-        </header>
+$page_title = "Rick and Morty News";
+$nav_curr = "News";
 
-        <!-- Navigation menu -->
-        <nav>
-            <ul>
-                <li><a class="nav-entry" href="index.html">Home</a></li>
-                <li><a class="nav-entry" href="SeasonGuide.html">Season Guide</a></li>
-                <li><a class="nav-entry" href="RandomClips.html">Random Funny Clips</a></li>
-                <li class="current"><span class="nav-entry">News</span>
-                    <ul>
-                        <li><a class="nav-entry" href="News.html#article1">RICK AND MORTY Catchphrases Fit Right Into This Awesome EDM Mix</a></li>
-
-                        <li><a class="nav-entry" href="News.html#article2">Rick and Morty showrunner Dan Harmon explains why season 3 was cut short</a></li>
-
-                        <li><a class="nav-entry" href="News.html#article3">Rick &amp; Morty Co-Creator Slams McDonald’s Szechuan Sauce Promo</a></li>
-                    </ul>
-                </li>
-                <li><a class="nav-entry" href="HowItAllStarted.html">How it all started</a></li>
-            </ul>
-        </nav>
-
-        
-        <!-- Main Content -->
-        <div class="main_content">
-            <main>
+function getPageContent() {
+    echo '<main>
                 <article id="article1">
                     <img class="news-img" src="https://nerdist.com/wp-content/uploads/2016/02/RickAndMortyEclectic022016.png" alt="Rick and Morty singing">
                     
@@ -153,18 +116,9 @@
                     <div class="news-time"> <time>2017-09-10 21:09</time> </div>
                     </div>
                 </article>
-            </main>
-        
-        </div>
-        </div>
-       <!-- Footer -->
-        <footer>
-            <p>&copy;2017 CSD AUTH </p>
-            <a href="https://github.com/alexaldev/rick-and-morty-website">
-                <img src="images/github-icon.png" alt="Github icon"/>
-            </a>
-        </footer>
+            </main>';
+}
 
-    </body>
-    
-</html>
+include('resources/template.php');
+
+?>
