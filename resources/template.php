@@ -42,8 +42,7 @@
                     echo '<li class="current"><span class="nav-entry">News</span>';
                 else
                     echo '<li><a class="nav-entry" href="News.php">News</a>';
-                echo '<li><a class="nav-entry" href="News.php">News</a>
-                    <ul>
+                echo '<ul>
                         <li><a class="nav-entry" href="News.php#article1">RICK AND MORTY Catchphrases Fit Right Into This Awesome EDM Mix</a></li>
 
                         <li><a class="nav-entry" href="News.php#article2">Rick and Morty showrunner Dan Harmon explains why season 3 was cut short</a></li>
