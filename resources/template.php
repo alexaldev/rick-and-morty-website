@@ -36,7 +36,7 @@
                 if ($nav_curr == "Random Funny Clips")
                     echo '<li class="current"><span class="nav-entry">Random Funny Clips</span></li>';
                 else
-                    echo '<li><a class="nav-entry" href="RandomClips.pjp">Random Funny Clips</a></li>';
+                    echo '<li><a class="nav-entry" href="RandomClips.php">Random Funny Clips</a></li>';
 
                 if ($nav_curr == "News")
                     echo '<li class="current"><span class="nav-entry">News</span>';
