@@ -2,6 +2,7 @@
 
 $page_title = "Comments";
 $nav_curr = "Comments";
+$num_comments_in_page = 2;
 
 function clean_string($mysql_link, $s) {
 	global $link;
@@ -27,8 +28,23 @@ function store_comment_in_db($mysql_link) {
 //	@mysql_close($link);
 }
 
-function print_comments_from_db($mysql_link) {
-	$query = "SELECT nickname, comment_text, datetime_created FROM comments ORDER BY datetime_created DESC;";
+function print_comments_from_db($mysql_link, $comments_in_page) {
+
+	$count_ans = mysqli_query($mysql_link, "SELECT COUNT(commentID) AS num_rows FROM comments");
+	$num_comments = mysqli_fetch_object($count_ans)->num_rows;
+
+	if (isset($_GET['page']) && gettype($_GET['page']) == "integer" && $_GET['page'] > 0)
+		$page = ($_GET['page'] < $num_of_pages) $_GET['page'] : $num_of_pages;
+	else
+		$page = 1;
+
+	$num_of_pages = ceil($num_comments / $comments_in_page);
+	$n = (($page-1) * $comments_in_page);
+
+	$query = "SELECT nickname, comment_text, datetime_created 
+				FROM comments 
+				ORDER BY datetime_created DESC
+				LIMIT $n,$comments_in_page;";
 
 	$results = mysqli_query($mysql_link, $query);
 
@@ -48,12 +64,23 @@ function print_comments_from_db($mysql_link) {
 		</div>
 <?php
 	}
+	echo '<div class="pages">';
+	echo '<span>Pages:&nbsp;</span>';
+	for ($i = 1; $i <= $num_of_pages; $i++)
+		if ($page == $i)
+			echo "<span>$i&nbsp;</span>";
+		else
+			echo "<a href ='#'>$i</a>&nbsp;";
+	echo '</div>';
+
 
 }
 
 function getPageContent() {
 
 	require("resources/connection.php");
+
+	global $num_comments_in_page;
 
 	if (isset($_POST['comment_text'])) {
 		store_comment_in_db($link);
@@ -62,7 +89,7 @@ function getPageContent() {
 	echo '<div id="comments_view">
 		<h2>Comments for this site</h2>';
 
-	print_comments_from_db($link);
+	print_comments_from_db($link, $num_comments_in_page);
 
 	mysqli_close($link);
 ?>
