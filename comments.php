@@ -24,7 +24,8 @@ function store_comment_in_db($mysql_link) {
 	$query = "INSERT INTO comments (nickname, email, comment_text) VALUES ('$input_nickname', '$input_email', '$input_comment_text');";
 
 	mysqli_query($mysql_link, $query);
-	error_log('MYSQL ANSWER' . mysqli_error($mysql_link));
+	if (mysqli_errno() != 0)
+		error_log('MYSQL ANSWER ERROR:' . mysqli_error($mysql_link));
 //	@mysql_close($link);
 }
 
@@ -32,13 +33,13 @@ function print_comments_from_db($mysql_link, $comments_in_page) {
 
 	$count_ans = mysqli_query($mysql_link, "SELECT COUNT(commentID) AS num_rows FROM comments");
 	$num_comments = mysqli_fetch_object($count_ans)->num_rows;
+	$num_of_pages = ceil($num_comments / $comments_in_page);
 
-	if (isset($_GET['page']) && gettype($_GET['page']) == "integer" && $_GET['page'] > 0)
-		$page = ($_GET['page'] < $num_of_pages) $_GET['page'] : $num_of_pages;
+	if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0)
+		$page = ($_GET['page'] < $num_of_pages) ? (int) $_GET['page'] : $num_of_pages;
 	else
 		$page = 1;
 
-	$num_of_pages = ceil($num_comments / $comments_in_page);
 	$n = (($page-1) * $comments_in_page);
 
 	$query = "SELECT nickname, comment_text, datetime_created 
@@ -70,7 +71,7 @@ function print_comments_from_db($mysql_link, $comments_in_page) {
 		if ($page == $i)
 			echo "<span>$i&nbsp;</span>";
 		else
-			echo "<a href ='#'>$i</a>&nbsp;";
+			echo "<a href ='?page=$i'>$i</a>&nbsp;";
 	echo '</div>';
 
 
