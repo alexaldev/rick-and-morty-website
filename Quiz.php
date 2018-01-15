@@ -30,6 +30,13 @@ function getNrandomNumbers($N, $min, $max) {
 
 function showQuiz() {
 
+	require("resources/connection.php");
+
+	$count_ans = mysqli_query($mysql_link, "SELECT COUNT(questionID) AS num_rows FROM quiz");
+	$total_num_questions = mysqli_fetch_object($count_ans)->num_rows;
+
+	$random_arr = getNrandomNumbers($n_questions, 0, $total_num_questions);
+
 	session_start();
 	echo '<p>We have a session</p>';
 

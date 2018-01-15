@@ -17,7 +17,7 @@ VALUES ('This should be the official Rick and Morty site... For real!11!!');
 UPDATE comments SET nickname = "1213" WHERE commentID = 2;
 
 CREATE TABLE quiz (
-	quizID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	questionID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	question TEXT,
 	possible_answers TEXT,
 	right_answer_index INT
