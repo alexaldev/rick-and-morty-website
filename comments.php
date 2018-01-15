@@ -3,48 +3,43 @@
 $page_title = "Comments";
 $nav_curr = "Comments";
 
-function clean_string($s) {
+function clean_string($mysql_link, $s) {
+	global $link;
+
 	$s = trim($s);
 	$s = addslashes($s);
-	$s = mysql_real_escape_string($s);
+	$s = mysqli_real_escape_string($mysql_link, $s);
 	return $s;
 }
 
-function store_comment_in_db() {
-	if (!$link)
-		required("resources/connection.php");
-
+function store_comment_in_db($mysql_link) {
 	if (isset($_POST['comment_text']))
-		$input_comment_text = clean_string($_POST['comment_text']);
+		$input_comment_text = clean_string($mysql_link, $_POST['comment_text']);
 
-	if (isset($_POST['nickname']))
-		$input_nickname = clean_string($_POST['nickname']);
+	$input_nickname = (isset($_POST['nickname'])) ? clean_string($mysql_link, $_POST['nickname']) : "NULL";
 
-	if (isset($_POST['email']))
-		$input_email = clean_string($_POST['email']);
+	$input_email = (isset($_POST['email'])) ? clean_string($mysql_link, $_POST['email']) : "NULL";
 
-	$query = "INSERT INTO customers (nickname, email, comment_text) VALUES ($input_nickname, $input_email, $input_comment_text);";
+	$query = "INSERT INTO comments (nickname, email, comment_text) VALUES ('$input_nickname', '$input_email', '$input_comment_text');";
 
-	@mysqli_query($link, $query);
+	mysqli_query($mysql_link, $query);
+	error_log('MYSQL ANSWER' . mysqli_error($mysql_link));
 //	@mysql_close($link);
 }
 
-function print_comments_from_db() {
-	if (!$link)
-		required("resources/connection.php");
+function print_comments_from_db($mysql_link) {
+	$query = "SELECT nickname, comment_text, datetime_created FROM comments ORDER BY datetime_created DESC;";
 
-	$query = "SELECT nickname, comment_text, datetime_created FROM comments;";
-
-	$results = @mysqli_query($link, $query);
+	$results = mysqli_query($mysql_link, $query);
 
 	while ($row = mysqli_fetch_array($results)) {
-		$nickname = ($row['nickname']) ? $row['nickname'] : 'Unknown';
+		$nickname = ($row['nickname']) ? htmlspecialchars($row['nickname']) : "Unknown";
 		echo "<div class=\"comment\">
 			<div class=\"comment_header\">
-				<p>$nickname said on $row['datetime_created']:</p>
+				<p>$nickname said on " . $row['datetime_created'] . ":</p>
 			</div>
 			<div class=\"comment_body\">
-				<p>$row['comment_text']</p>
+				<p>" . htmlspecialchars($row['comment_text']) . "</p>
 			</div>
 		</div>";
 	}
@@ -53,14 +48,18 @@ function print_comments_from_db() {
 
 function getPageContent() {
 
+	require("resources/connection.php");
+
 	if (isset($_POST['comment_text'])) {
-		store_comment_in_db();
+		store_comment_in_db($link);
 	}
 
 	echo '<div id="comments_view">
 		<h2>Comments for this site</h2>';
 
-	print_comments_from_db();
+	print_comments_from_db($link);
+
+	mysqli_close($link);
 
 	echo '</div>';
 
