@@ -10,6 +10,11 @@
         <title>
 	       <?php echo $page_title; ?> 
         </title>
+	
+	<?php 
+		if (function_exists("getHeadContent"))
+			getHeadContent();
+	?>
     
     </head>
 

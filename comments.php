@@ -71,10 +71,12 @@ function print_comments_from_db($mysql_link, $comments_in_page) {
 		if ($page == $i)
 			echo "<span>$i&nbsp;</span>";
 		else
-			echo "<a href ='?page=$i'>$i</a>&nbsp;";
+			echo "<a class=\"page_num\" href ='?page=$i'>$i</a>&nbsp;";
 	echo '</div>';
+}
 
-
+function getHeadContent() {	
+	echo '<script type="text/javascript" src="js/comments_ajax_go_to_page.js"></script>';
 }
 
 function getPageContent() {
