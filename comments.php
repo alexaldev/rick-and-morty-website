@@ -34,14 +34,19 @@ function print_comments_from_db($mysql_link) {
 
 	while ($row = mysqli_fetch_array($results)) {
 		$nickname = ($row['nickname']) ? htmlspecialchars($row['nickname']) : "Unknown";
-		echo "<div class=\"comment\">
-			<div class=\"comment_header\">
-				<p>$nickname said on " . $row['datetime_created'] . ":</p>
+		$datime = $row['datetime_created'];
+		$comment_text = htmlspecialchars($row['comment_text']);
+
+?>
+		<div class="comment">
+			<div class="comment_header">
+				<p><?php echo "$nickname said on $datime:" ?></p>
 			</div>
 			<div class=\"comment_body\">
-				<p>" . htmlspecialchars($row['comment_text']) . "</p>
+				<p> <?php echo "$comment_text" ?> </p>
 			</div>
-		</div>";
+		</div>
+<?php
 	}
 
 }
@@ -60,10 +65,10 @@ function getPageContent() {
 	print_comments_from_db($link);
 
 	mysqli_close($link);
+?>
+	</div>
 
-	echo '</div>';
-
-	echo '<div id="comment_form">
+	<div id="comment_form">
 		<h3>Submit a comment</h3>
 		<form method="post" action="">
 		<label for="nickname">Nickname:</label>
@@ -77,7 +82,8 @@ function getPageContent() {
 		<input type="submit" value="Submit Comment">
 		<!--<input type="reset" value="Reset values">-->
 		</form>
-		</div>';
+	</div>
+<?php
 }
 
 include('resources/template.php');

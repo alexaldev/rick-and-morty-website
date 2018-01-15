@@ -4,30 +4,30 @@ $page_title = "Rick and Morty News";
 $nav_curr = "News";
 
 function getPageContent() {
-    echo '<main>
-                <article id="article1">
-                    <img class="news-img" src="https://nerdist.com/wp-content/uploads/2016/02/RickAndMortyEclectic022016.png" alt="Rick and Morty singing">
+?>
+<main>
+    <article id="article1">
+        <img class="news-img" src="https://nerdist.com/wp-content/uploads/2016/02/RickAndMortyEclectic022016.png" alt="Rick and Morty singing">
                     
-                    <div class="news-text">
-                    <div class="news-title">
-                    <h2>
-                        RICK AND MORTY Catchphrases Fit Right Into This Awesome EDM Mix
-                    </h2>
-                    </div>
+        <div class="news-text">
+        <div class="news-title">
+        <h2>
+            RICK AND MORTY Catchphrases Fit Right Into This Awesome EDM Mix
+        </h2>
+        </div>
 
-                    <div class="news-content">
-                    <p>
-                        While we may not have new Rick and Morty episodes for quite some time, it’s good to know the fans of the show are out there in the world creating all sorts of awesome stuff inspired by the show. A quick search on Google returns a plethora of fan art, video essays, and more than a few musical re-imaginings including this incredibly catchy EDM remix.</p>
+        <div class="news-content">
+            <p>
+                While we may not have new Rick and Morty episodes for quite some time, it’s good to know the fans of the show are out there in the world creating all sorts of awesome stuff inspired by the show. A quick search on Google returns a plethora of fan art, video essays, and more than a few musical re-imaginings including this incredibly catchy EDM remix.</p>
 
-                        <iframe src="https://www.youtube.com/embed/uhdXgSUrCCI" allowfullscreen="allowfullscreen"></iframe>
+            <iframe src="https://www.youtube.com/embed/uhdXgSUrCCI" allowfullscreen="allowfullscreen"></iframe>
 
-<p>English musician Leslie Wai combines more Rick and Morty samples than we can even count and uses them to build an absolutely awesome EDM remix. As with most Rick and Morty songs out there today, the song hits on quite a few of the musical elements that are already in the show as well as the catchphrases you’d expect. However, what’s impressive about Wai’s is how he cut some elements into pieces and is able to build them into something more. Notably Rick’s “Wubba Lubba dub-dub” catchphrase–that’s already pretty darn singsongy–feels right at home in an EDM tune when parts of it continue over the beat around the 50 second mark. Wai also seems to have found the perfect home for “I’m Pickle Rick!” when the drop comes toward the end of the song.</p>
+            <p>English musician Leslie Wai combines more Rick and Morty samples than we can even count and uses them to build an absolutely awesome EDM remix. As with most Rick and Morty songs out there today, the song hits on quite a few of the musical elements that are already in the show as well as the catchphrases you’d expect. However, what’s impressive about Wai’s is how he cut some elements into pieces and is able to build them into something more. Notably Rick’s “Wubba Lubba dub-dub” catchphrase–that’s already pretty darn singsongy–feels right at home in an EDM tune when parts of it continue over the beat around the 50 second mark. Wai also seems to have found the perfect home for “I’m Pickle Rick!” when the drop comes toward the end of the song.</p>
 
-<p>The song is available on SoundCloud along with a link to download it, should you need to make your next road trip or visit to the gym energetic in the schwiftiest of ways.</p>
+            <p>The song is available on SoundCloud along with a link to download it, should you need to make your next road trip or visit to the gym energetic in the schwiftiest of ways.</p>
 
-<p>What’s your favorite Rick and Morty musical remix out there? What catchphrase or quote do you think would have worked in the song? Let’s discuss in the comments below!
-                    </p>
-                    </div>
+            <p>What’s your favorite Rick and Morty musical remix out there? What catchphrase or quote do you think would have worked in the song? Let’s discuss in the comments below!</p>
+        </div>
 
                     <div class="news-small">
                         <small>
@@ -116,7 +116,8 @@ function getPageContent() {
                     <div class="news-time"> <time>2017-09-10 21:09</time> </div>
                     </div>
                 </article>
-            </main>';
+            </main>
+<?php
 }
 
 include('resources/template.php');
