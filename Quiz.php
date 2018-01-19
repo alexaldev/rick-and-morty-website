@@ -9,7 +9,7 @@ $n_questions = 2;
 // number of total questions in db
 
 // Return N unique random numbers in range min-max
-function getNrandomNumbers($N, $min, $max) {
+function getNrandomNumbers($N, $min, $max) { //EDW XREIAZETAI MALLON -1 AMA BUGGAREI TO KANOYME -1
 
 	// Optimized solution for picking few numbers from a big pool
 	if (($max-$min) - $N > 200) {
