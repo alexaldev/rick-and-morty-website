@@ -45,7 +45,7 @@ function initializeQuiz($n_questions) {
 
 	session_start();
 	$_SESSION['test'] = $random_arr[0];
-	echo '<p>We have a session</p>';
+	echo '<p>We have a session ' . session_id() . '</p>';
 	echo '<p>I give you this random number -> ' . $_SESSION['test'] . '.</p>';
 }
 
@@ -58,9 +58,9 @@ function check_and_reply_question() {
 
 function getPageContent() {
 	echo '<p>Quiz page! (Under construction)</p>';
-	global $n_questions = 2;
+	global $n_questions;
 
-	if (session_status() == PHP_SESSION_NONE)
+	if ($_COOKIE['PHPSESSID'] == '')
 		initializeQuiz($n_questions);
 	else
 		check_and_reply_question();
