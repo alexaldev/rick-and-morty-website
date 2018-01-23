@@ -9,7 +9,7 @@ $n_questions = 2;
 // number of total questions in db
 
 // Return N unique random numbers in range min-max
-function getNrandomNumbers($N, $min, $max) { //EDW XREIAZETAI MALLON -1 AMA BUGGAREI TO KANOYME -1
+function getNrandomNumbers($N, $min, $max) {
 
 	// Optimized solution for picking few numbers from a big pool
 	if (($max-$min) - $N > 200) {
@@ -29,7 +29,7 @@ function getNrandomNumbers($N, $min, $max) { //EDW XREIAZETAI MALLON -1 AMA BUGG
 	}
 }
 
-function showQuiz() {
+function initializeQuiz($n_questions) {
 
 	require("resources/connection.php");
 
@@ -46,13 +46,25 @@ function showQuiz() {
 	session_start();
 	$_SESSION['test'] = $random_arr[0];
 	echo '<p>We have a session</p>';
-	echo '<p>Here is your random number -> ' . $_SESSION['test'] . '.</p>';
+	echo '<p>I give you this random number -> ' . $_SESSION['test'] . '.</p>';
+}
 
+function check_and_reply_question() {
+
+	session_start();
+
+	echo '<p>Here is your random number -> ' . $_SESSION['test'] . '.</p>';
 }
 
 function getPageContent() {
 	echo '<p>Quiz page! (Under construction)</p>';
-	showQuiz();
+	global $n_questions = 2;
+
+	if (session_status() == PHP_SESSION_NONE)
+		initializeQuiz($n_questions);
+	else
+		check_and_reply_question();
+
 }
 
 include('resources/template.php');
