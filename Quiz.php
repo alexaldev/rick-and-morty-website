@@ -38,35 +38,50 @@ function initializeQuiz($n_questions) {
 	
 	$random_arr = getNrandomNumbers($n_questions, 1, $total_num_questions);
 
+	session_start();
+	$_SESSION['test'] = $random_arr[0];
+
+	echo "<html><body><div class=quiz_question>";
 	echo "<p>Random numbers: </p>";
 	foreach ($random_arr as $num) {
 		echo "$num; ";
 	}
-
-	session_start();
-	$_SESSION['test'] = $random_arr[0];
 	echo '<p>We have a session ' . session_id() . '</p>';
 	echo '<p>I give you this random number -> ' . $_SESSION['test'] . '.</p>';
+	echo "</div></body></html>";
 }
 
 function check_and_reply_question() {
 
 	session_start();
-
+	echo "<html><body><div class=quiz_question>";
 	echo '<p>Here is your random number -> ' . $_SESSION['test'] . '.</p>';
+	echo "</div></body></html>";
+}
+
+
+function getHeadContent() {
+	echo '<script type="text/javascript" src="js/quiz.js"></script>';
 }
 
 function getPageContent() {
-	echo '<p>Quiz page! (Under construction)</p>';
-	global $n_questions;
+	//echo '<p>Quiz page! (Under construction)</p>';
+	//global $n_questions;
 
-	if ($_COOKIE['PHPSESSID'] == '')
-		initializeQuiz($n_questions);
-	else
-		check_and_reply_question();
+?>
+		<div class='quiz_container'>
+			<button type='button' id='quiz_start_button'>Start Quiz</button>
+		</div>
+<?php
+		//initializeQuiz($n_questions);
 
 }
 
-include('resources/template.php');
+if (!isset($_POST['startQuiz']) && !isset($_COOKIE['PHPSESSID']))
+	include('resources/template.php');
+else if (isset($_POST['startQuiz']) && $_POST['startQuiz'] == 1)
+	initializeQuiz($n_questions);
+else
+	check_and_reply_question();
 
 ?>
