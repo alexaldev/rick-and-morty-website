@@ -91,14 +91,14 @@ function generate_question() {
 
 	$_SESSION['right_answer_index'] = $right_answer_index;
 ?>
-	<div class="current quiz_question">
+	<form class="current quiz_question">
 		<?php echo "<p> $question </p>";
 			echo "<div class=\"answers\">";
 			foreach($answers as $i=>$ans)
 				echo "<div class=\"answer_choice\"><input type=\"radio\" name=\"answer\" value=\"$i\"><p>$ans</p></div>";
 			echo "</div>";
 		?>
-	</div>
+	</form>
 <?php
 }
 
