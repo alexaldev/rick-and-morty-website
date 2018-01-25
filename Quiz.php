@@ -4,7 +4,7 @@ $page_title = "Quiz";
 $nav_curr = "Quiz";
 
 // number of questions to be appeared ni site
-$n_questions = 2;
+$n_questions = 5;
 
 // number of total questions in db
 
