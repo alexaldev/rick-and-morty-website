@@ -256,15 +256,30 @@ article iframe {
 .quiz_question {
 	padding-bottom: 1em;
 	border-bottom: solid;
-	margin-bottom: 1.3em;
+	margin: 0 auto 1.3em;
+	width: 40%;
+	text-align: left;
+}
+
+.answer_choice {
+	padding: 0.2em 0;
 }
 
 .answer_choice p { 
 	font-weight: normal;
 }
 
+.answer_choice:hover {
+	background-color: rgba(0,0,0,0.4);
+}
+
+.answer_choice input[type="radio"] {
+	display: none;
+}
+
 .answers {
 	margin-top: 0.5em;
+	cursor: pointer;
 }
 
 

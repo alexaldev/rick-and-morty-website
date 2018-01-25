@@ -95,7 +95,7 @@ function generate_question() {
 		<?php echo "<p> $question </p>";
 			echo "<div class=\"answers\">";
 			foreach($answers as $i=>$ans)
-				echo "<div class=\"answer_choice\"><input type=\"radio\" name=\"answer\" value=\"$i\"><p>$ans</p></div>";
+				echo "<div class=\"answer_choice\"><input type=\"radio\" name=\"answer\" value=\"$i\"><p>" . chr($i+97) . ") $ans</p></div>";
 			echo "</div>";
 		?>
 	</form>

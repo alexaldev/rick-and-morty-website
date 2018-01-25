@@ -36,9 +36,17 @@ function checkAnswer(event) {
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send(currAnsName + "=" + currAnsValue);
 
+	// Tide up
 	var currButtonDivs = allAnswers.getElementsByClassName('answer_choice');
-	for (var i=0; i<currButtonDivs.length; i++)
+	for (var i=0; i<currButtonDivs.length; i++) {
 		currButtonDivs[i].getElementsByTagName('input')[0].disabled = true;
+		currButtonDivs[i].getElementsByTagName('input')[0].removeEventListener('click', checkAnswer);
+		currButtonDivs[i].removeEventListener('click', clickInput);
+	}	
+}
+
+function clickInput(event) {
+	event.currentTarget.getElementsByTagName('input')[0].click();
 }
 
 function addRadioListeners() {
@@ -46,10 +54,14 @@ function addRadioListeners() {
 		.querySelector('.current.quiz_question .answers')
 		.getElementsByClassName('answer_choice');
 
-	for (var i=0; i<currButtonDivs.length; i++)
+	for (var i=0; i<currButtonDivs.length; i++) {
 		currButtonDivs[i]
 			.getElementsByTagName('input')[0]
 			.addEventListener('click', checkAnswer);
+		
+		currButtonDivs[i].addEventListener('click', clickInput)
+	}
+
 }
 
 function requestQuizStart(event) {
