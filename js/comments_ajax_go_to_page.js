@@ -12,6 +12,8 @@ function go_to_page(event) {
 				var comments_view_new = doc.getElementById('comments_view');
 				comments_view_old.replaceWith(comments_view_new);
 				addListeners();
+				if (event.target.parentNode.classList.contains('bottom'))
+					window.location.hash = '#comments_view';
 			}
 	}
 	request.send();

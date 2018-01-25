@@ -110,7 +110,7 @@ nav ul li:hover > ul {
     display: inline;
 }
 
-.main_content p {
+.main_content p,pre {
     display: inline;
     color: white;
     font-weight: bold;
@@ -224,6 +224,50 @@ article iframe {
   	margin-left: auto;
   	margin-right: auto;
 }
+
+
+/** COMMENTS PAGE */
+.main_content pre {
+	font-weight: normal;
+}
+
+#comments_view {
+	display: inline-block;
+}
+
+.comment {
+	background-color: rgba(0,0,0,0.3);
+	margin: 1em auto;
+	padding: 0.4em 0;
+}
+
+.comment_header {
+	margin-bottom: 0.3em;
+	font-style: italic;
+}
+
+
+
+/** QUIZ PAGE */
+.quiz_container {
+	/*display: inline-block;*/
+}
+
+.quiz_question {
+	padding-bottom: 1em;
+	border-bottom: solid;
+	margin-bottom: 1.3em;
+}
+
+.answer_choice p { 
+	font-weight: normal;
+}
+
+.answers {
+	margin-top: 0.5em;
+}
+
+
 
 /*      FOOTER STYLE    */
 footer {

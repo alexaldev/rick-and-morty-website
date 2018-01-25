@@ -2,7 +2,7 @@
 
 $page_title = "Comments";
 $nav_curr = "Comments";
-$num_comments_in_page = 2;
+$num_comments_in_page = 10;
 
 function clean_string($mysql_link, $s) {
 	global $link;
@@ -49,10 +49,12 @@ function print_comments_from_db($mysql_link, $comments_in_page) {
 
 	$results = mysqli_query($mysql_link, $query);
 
+	printPageNavigator($page, $num_of_pages, 'up');
+
 	while ($row = mysqli_fetch_array($results)) {
 		$nickname = ($row['nickname']) ? htmlspecialchars($row['nickname']) : "Unknown";
 		$datime = $row['datetime_created'];
-		$comment_text = htmlspecialchars($row['comment_text']);
+		$comment_text = htmlspecialchars(stripslashes($row['comment_text']));
 
 ?>
 		<div class="comment">
@@ -60,12 +62,16 @@ function print_comments_from_db($mysql_link, $comments_in_page) {
 				<p><?php echo "$nickname said on $datime:" ?></p>
 			</div>
 			<div class=\"comment_body\">
-				<p> <?php echo "$comment_text" ?> </p>
+				<pre> <?php echo "$comment_text" ?> </pre>
 			</div>
 		</div>
 <?php
 	}
-	echo '<div class="pages">';
+	printPageNavigator($page, $num_of_pages, 'bottom');
+}
+
+function printPageNavigator($page, $num_of_pages, $extra_class) {
+	echo '<div class="pages ' . $extra_class . '">';
 	echo '<span>Pages:&nbsp;</span>';
 	for ($i = 1; $i <= $num_of_pages; $i++)
 		if ($page == $i)
@@ -102,10 +108,10 @@ function getPageContent() {
 		<h3>Submit a comment</h3>
 		<form method="post" action="">
 		<label for="nickname">Nickname:</label>
-		<input id="nickname" type="text" name="nickname" placeholder="<your nickname> (optional)">
+		<input id="nickname" type="text" name="nickname" placeholder="(optional)">
 		
 		<label for="email">Email:</label>
-		<input id="email" type="email" name="email" placeholder="<your email> (optional)"><br>
+		<input id="email" type="email" name="email" placeholder="(optional)"><br>
 		
 		<label for="comment_text">Comment:</label><br>
 		<textarea required id="comment_text" name="comment_text" rows="5" cols="80" placeholder="Your comment goes here..."></textarea><br>
