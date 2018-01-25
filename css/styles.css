@@ -225,6 +225,12 @@ article iframe {
   	margin-right: auto;
 }
 
+.quiz_start_button {
+
+    font-size: 24px;
+
+}
+
 /*      FOOTER STYLE    */
 footer {
     position: relative;
